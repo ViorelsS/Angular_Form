@@ -32,6 +32,7 @@ export class UserService {
 
   //ADD USER -->Id is assigned automatically by the api (incremental)
   addUser(user: User): Observable<User> {
+    console.log(user);
     return this.http.post<User>(this.apiUrl, user, httpOptions);
   }
 

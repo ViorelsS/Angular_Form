@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 
 import { User } from './interfaces/user';
 import { UserService } from './services/http/user.service';
-import { UiService } from './services/ui/ui.service';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -20,9 +19,7 @@ export class AppComponent {
   constructor(private userService: UserService) {}
 
   addUser(user: User) {
-    this.userService
-      .addUser(user)
-      .subscribe((user) => this.userData.push(user));
+    this.userService.addUser(user).subscribe((user) => (this.user = user));
   }
 
   toggleClick() {
