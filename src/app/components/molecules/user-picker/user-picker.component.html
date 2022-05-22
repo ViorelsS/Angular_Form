@@ -1,0 +1,7 @@
+<div
+  class="bg-slate-100 h-[50vh] w-[30vw] rounded-lg shadow-md bg-opacity-60 flex flex-col place-content-center items-center mt-2"
+>
+  <span class="font-header text-white">Richiedi info utente 100</span>
+  <app-button (click)="toggleClick()" [btnMessage]="text"></app-button>
+  <app-user-card *ngIf="user !== undefined" [user]="user"></app-user-card>
+</div>

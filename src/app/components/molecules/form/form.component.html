@@ -1,13 +1,15 @@
 <div
   class="bg-slate-100 h-[60vh] w-[30vw] rounded-lg shadow-md bg-opacity-60 flex flex-col place-content-center items-center"
 >
-  <form>
+  <form (ngSubmit)="onSubmit()">
     <!-- name input -->
     <div class="flex flex-col place-items-center">
       <span class="font-header text-[16px] text-cyan-700">Nome</span>
       <input
         type="text"
+        [(ngModel)]="name"
         name="name"
+        id="name"
         class="bg-slate-200 rounded-md hover:bg-cyan-100 border-0"
       />
     </div>
@@ -17,6 +19,8 @@
       <input
         type="text"
         name="email"
+        [(ngModel)]="email"
+        id="email"
         class="bg-slate-200 rounded-md hover:bg-cyan-100 border-0"
       />
     </div>
@@ -26,17 +30,30 @@
       <input
         type="text"
         name="gender"
+        [(ngModel)]="gender"
+        id="gender"
         class="bg-slate-200 rounded-md hover:bg-cyan-100 border-0"
       />
     </div>
     <!-- status input -->
     <div class="flex flex-col place-items-center">
       <span class="font-header text-[16px] text-cyan-700">Status</span>
-      <input
+      <!-- <input
         type="text"
         name="status"
+        [(ngModel)]="status"
+        id="status"
         class="bg-slate-200 rounded-md hover:bg-cyan-100 border-0"
-      />
+      /> -->
+      <select
+        class="bg-slate-200 rounded-md hover:bg-cyan-100 border-0"
+        name="status"
+        [(ngModel)]="status"
+        id="status"
+      >
+        <option value="active">Attivo</option>
+        <option value="inactive">Inattivo</option>
+      </select>
     </div>
     <!-- Button input -->
     <div class="flex place-content-center pt-4">

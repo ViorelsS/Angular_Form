@@ -1,0 +1,29 @@
+<div class="w-[30vw] p-2 flex flex-col" (dblclick)="onToggle(user)">
+  <span class="font-semibold text-[14px] flex place-content-center">Nome:</span>
+  <span
+    class="font-header text-[16px] text-slate-100 flex place-content-center"
+    >{{ user.name }}</span
+  >
+
+  <span class="font-semibold text-[14px] flex place-content-center"
+    >Email:</span
+  >
+  <span
+    class="font-header text-[16px] text-slate-100 flex place-content-center"
+    >{{ user.email }}</span
+  >
+
+  <div class="flex flex-row justify-center">
+    <span class="font-semibold text-[14px] pr-2">Genere:</span>
+    <span class="font-header text-[14px] text-slate-100">{{
+      user.gender === "male" ? "Maschio" : "Femmina"
+    }}</span>
+  </div>
+
+  <div class="flex flex-row justify-center">
+    <span class="font-semibold text-[14px]">Status:</span>
+    <span class="font-header text-[16px] text-slate-100">{{
+      user.status === "active" ? "Attivo" : "Inattivo"
+    }}</span>
+  </div>
+</div>
