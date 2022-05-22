@@ -1,5 +1,6 @@
 <div
-  class="bg-slate-100 h-[50vh] w-[30vw] rounded-lg shadow-md bg-opacity-60 flex flex-col place-content-center items-center mt-2"
+  *ngIf="!enablePatch"
+  class="bg-slate-100 w-[30vw] rounded-lg shadow-md bg-opacity-60 flex flex-col place-content-center items-center mt-2"
 >
   <span *ngIf="!user" class="font-header text-white"
     >Richiedi info per un utente:</span
@@ -7,7 +8,7 @@
 
   <!-- name input -->
   <div *ngIf="!user" class="flex flex-col place-items-center">
-    <span class="font-header text-[16px] text-cyan-700">Nome</span>
+    <span class="font-header text-[16px] text-cyan-700">Scegli l'id</span>
     <input
       type="number"
       [(ngModel)]="id"
@@ -25,11 +26,19 @@
     ></app-button>
   </div>
   <app-user-card *ngIf="user !== undefined" [user]="user"></app-user-card>
-  <app-button
-    *ngIf="user"
-    (click)="toggleDelete(user)"
-    [btnMessage]="delete"
-  ></app-button>
+  <!-- DELETING AND PATCHING USER DATA -->
+  <div class="flex flex-row">
+    <app-button
+      *ngIf="user"
+      (click)="toggleDelete(user)"
+      [btnMessage]="delete"
+    ></app-button>
+    <app-button
+      *ngIf="user"
+      (click)="toggleEdit(user)"
+      [btnMessage]="patch"
+    ></app-button>
+  </div>
 
   <div *ngIf="softDeleted">
     <div

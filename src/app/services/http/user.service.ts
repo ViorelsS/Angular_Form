@@ -7,6 +7,7 @@ import { environment } from 'src/environments/environment';
 
 const httpOptions = {
   headers: new HttpHeaders({
+    Accept: 'application/json',
     'Content-Type': 'application/json',
     Authorization: `Bearer ${environment.gorest_token}`,
   }),
@@ -26,8 +27,8 @@ export class UserService {
   }
 
   //GET A SPECIFIC USER BY IT'S ID
-  getSpecificUser(id: number): Observable<User> {
-    return this.http.get<User>(`${this.apiUrl}/${id}`);
+  getSpecificUser(id: string | number): Observable<User> {
+    return this.http.get<User>(this.apiUrl + '/' + id);
   }
 
   //ADD USER -->Id is assigned automatically by the api (incremental)

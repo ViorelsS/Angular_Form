@@ -12,23 +12,38 @@ export class UserPickerComponent implements OnInit {
   softDeleted: boolean = false;
   text: string = 'Richiedi';
   delete: string = 'Delete';
+  patch: string = 'Cambia status';
+  patchType: string = 'patch';
+  enablePatch: boolean = false;
   user!: User;
   id!: number;
   @Output() btnClick = new EventEmitter();
   subscription!: Subscription;
 
-  constructor(private userService: UserService) {}
+  constructor(private userService: UserService) {
+    this.enablePatch = false;
+  }
 
   ngOnInit(): void {}
 
   toggleClick() {
-    this.userService
-      .getSpecificUser(this.id)
-      .subscribe((user) => (this.user = user));
+    this.userService.getSpecificUser(this.id).subscribe(
+      (user) => (this.user = user),
+      (err) => alert(`Errore 404: risorsa non trovata o danneggiata`)
+    );
   }
 
   toggleDelete(user: User) {
     // this.userService.deleteUser(user).subscribe((user) => console.log(user));
     this.softDeleted = !this.softDeleted;
+  }
+
+  toggleEdit(user: User) {
+    this.userService
+      .updateUserStatus({
+        ...user,
+        status: this.user.status === 'active' ? 'inactive' : 'active',
+      })
+      .subscribe(() => (this.enablePatch = true));
   }
 }
