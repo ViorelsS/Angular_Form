@@ -13,7 +13,7 @@ export class UserPickerComponent implements OnInit {
   text: string = 'Richiedi';
   delete: string = 'Delete';
   patch: string = 'Cambia status';
-  patchType: string = 'patch';
+  backMsg: string = 'Indietro';
   enablePatch: boolean = false;
   user!: User;
   id!: number;
@@ -45,5 +45,9 @@ export class UserPickerComponent implements OnInit {
         status: this.user.status === 'active' ? 'inactive' : 'active',
       })
       .subscribe(() => (this.enablePatch = true));
+  }
+
+  toggleBack() {
+    window.location.reload();
   }
 }

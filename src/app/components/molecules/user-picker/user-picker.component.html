@@ -1,6 +1,6 @@
 <div
   *ngIf="!enablePatch"
-  class="bg-slate-100 w-[30vw] rounded-lg shadow-md bg-opacity-60 flex flex-col place-content-center items-center mt-2"
+  class="bg-slate-100 w-[300px] rounded-lg shadow-md bg-opacity-60 flex flex-col place-content-center items-center mt-2"
 >
   <span *ngIf="!user" class="font-header text-white"
     >Richiedi info per un utente:</span
@@ -35,8 +35,8 @@
     ></app-button>
     <app-button
       *ngIf="user"
-      (click)="toggleEdit(user)"
-      [btnMessage]="patch"
+      (click)="toggleBack()"
+      [btnMessage]="backMsg"
     ></app-button>
   </div>
 
